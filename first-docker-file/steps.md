@@ -1,92 +1,125 @@
-INSTALL DOCKER
-A very detailed instructions to install Docker are provide in the below link
+# Docker Installation and Usage Guide
 
-https://docs.docker.com/get-docker/
+A very detailed guide to install Docker can be found [here](https://docs.docker.com/get-docker/).
 
-Steps:
+## Steps:
 
-create an Ubuntu EC2 Instance on AWS, Login and run the below commands to install docker.
+### 1. Create an Ubuntu EC2 Instance on AWS
+1. Launch an Ubuntu EC2 instance.
+2. SSH into the instance.
 
+### 2. Install Docker
+Run the following commands to install Docker:
+```bash
 sudo apt update
 sudo apt install docker.io -y
-Start Docker and Grant Access
-A very common mistake that many beginners do is, After they install docker using the sudo access, they miss the step to Start the Docker daemon and grant acess to the user they want to use to interact with docker and run docker commands.
+```
 
-Always ensure the docker daemon is up and running.
+### 3. Start Docker and Grant Access
+A common mistake beginners make is forgetting to:
+1. Start the Docker daemon.
+2. Grant access to the user to interact with Docker and run commands.
 
-A easy way to verify your Docker installation is by running the below command
+Always ensure the Docker daemon is running.
 
+#### Verify Docker Installation
+Run the following command:
+```bash
 docker run hello-world
-If the output says:
+```
 
+If you encounter this error:
+```bash
 docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.
 See 'docker run --help'.
-This can mean two things,
+```
+It means:
+1. The Docker daemon is not running.
+2. Your user does not have access to run Docker commands.
 
-Docker deamon is not running.
-Your user does not have access to run docker commands.
-Start Docker daemon
-You use the below command to verify if the docker daemon is actually started and Active
-
+#### Start Docker Daemon
+To verify if the Docker daemon is running:
+```bash
 sudo systemctl status docker
-If you notice that the docker daemon is not running, you can start the daemon using the below command
+```
 
+If it is not running, start it:
+```bash
 sudo systemctl start docker
-Grant Access to your user to run docker commands
-To grant access to your user to run the docker command, you should add the user to the Docker Linux group. Docker group is create by default when docker is installed.
+```
 
+#### Grant Access to Your User
+Add the user to the Docker Linux group:
+```bash
 sudo usermod -aG docker ubuntu
-In the above command ubuntu is the name of the user, you can change the username appropriately.
+```
+Replace `ubuntu` with the appropriate username.
 
-NOTE: : You need to logout and login back for the changes to be reflected.
+**Note:** You need to logout and login back for the changes to take effect.
 
-Docker is Installed, up and running 
-Use the same command again, to verify that docker is up and running.
-
+#### Verify Installation Again
+Run:
+```bash
 docker run hello-world
-Output should look like:
-
-....
-....
+```
+Expected output:
+```
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
-...
-...
+```
 
-Clone this repository and move to example folder
+### 4. Clone the Repository and Move to Example Folder
+```bash
 git clone git@github.com:AnkithaVRamaiah/Docker-projects.git
-cd  examples
-Login to Docker [Create an account with https://hub.docker.com/]
-docker login
-Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
-You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+cd examples
+```
 
+### 5. Login to Docker Hub
+Create an account at [Docker Hub](https://hub.docker.com/), then login:
+```bash
+docker login
+```
+Log in with your Docker ID or email address.
+
+Example:
+```bash
 Username: ankithav
 Password:
+```
+Output:
+```
 WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+Configure a credential helper to remove this warning. See https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+```
 
-Build your first Docker Image
-You need to change the username accoringly in the below command
-
+### 6. Build Your First Docker Image
+Replace `ankithav` with your username:
+```bash
 docker build -t ankithav/my-first-docker-image:latest .
-Output of the above command
-
+```
+Output:
+```
 Successfully built a371532791d3
 Successfully tagged ankithav/my-first-docker-image:latest
+```
 
-Run your First Docker Container
+### 7. Run Your First Docker Container
+```bash
 docker run -it ankithav/my-first-docker-image
-Output
-
+```
+Output:
+```
 Hello World
-Push the Image to DockerHub and share it with the world
-docker push ankithav/my-first-docker-image
-Output
+```
 
+### 8. Push the Image to Docker Hub
+```bash
+docker push ankithav/my-first-docker-image
+```
+Output:
+```
 Using default tag: latest
 The push refers to repository [docker.io/ankithav/my-first-docker-image]
 a3e00071145f: Pushed
@@ -94,4 +127,3 @@ abfa678ae1a3: Pushed
 e1b6827ff1b8: Pushed
 687d50f2f6a6: Mounted from library/ubuntu
 latest: digest: sha256:99482c082538b0d693c36e1005c2255d0cd9c1f472c5007b8027b1976fa0870e size: 1155
-
