@@ -1,4 +1,5 @@
-To create a Docker file, build an image, and run a container to see your Django application, follow these steps:
+# To create a Docker file, build an image, and run a container to see your Django application, follow these steps:
+
 ### 1. **Create Dockerfile**
 
 ### 2. **Build Docker Image**
