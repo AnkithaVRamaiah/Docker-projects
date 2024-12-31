@@ -47,7 +47,7 @@ We will first create two containers (`login` and `logout`), run them, and check 
      ```
    - In the `login` container shell, try pinging the `logout` container's IP address:
      ```bash
-     ping <logout-container-ip>
+     ping <logout-container-ipaddress>
      ```
    - This will check the connectivity between the two containers using the **default bridge network**.
 
