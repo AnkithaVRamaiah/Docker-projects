@@ -8,7 +8,7 @@
    - Follow the installation steps in the `README.md` file as provided in the repository.
 
 3. **Prepare the Dockerfile**
-   - Ensure the **Dockerfile** is already present build and run container.
+   - Ensure that the Dockerfile is already present in the repository (as cloned in Step 2)
    - This project involves attaching a volume to persist the data (logs, calculations, etc.) even if the container is stopped or removed.
 
 4. **Create a Docker Volume**
