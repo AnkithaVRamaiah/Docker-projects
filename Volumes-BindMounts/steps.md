@@ -4,11 +4,11 @@
    - Follow the same process as before to create an Ubuntu EC2 instance and SSH into it.
 
 2. **Clone the GitHub Repository and Install Dependencies**
-   - Clone the repository containing the multistage Dockerfile.
+   - Clone the repository.
    - Follow the installation steps in the `README.md` file as provided in the repository.
 
 3. **Prepare the Dockerfile**
-   - Ensure the **multistage Dockerfile** is already present as per the previous instructions.
+   - Ensure the **Dockerfile** is already present build and run container.
    - This project involves attaching a volume to persist the data (logs, calculations, etc.) even if the container is stopped or removed.
 
 4. **Create a Docker Volume**
